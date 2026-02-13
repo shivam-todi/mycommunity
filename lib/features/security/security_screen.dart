@@ -4,6 +4,7 @@ import '../../shared/widgets/section_header.dart';
 import '../../shared/widgets/icon_container.dart';
 import '../../shared/widgets/custom_icons.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class SecurityScreen extends StatefulWidget {
   const SecurityScreen({super.key});
@@ -121,13 +122,13 @@ class _SecurityScreenState extends State<SecurityScreen> {
           const SizedBox(height: AppConstants.spacingSmall),
           _buildAccessLogCard(
             icon: Icons.vpn_key,
-            iconColor: Colors.blue[300]!,
+            iconColor: AppTheme.primaryBlue,
             title: 'Villa Main Door',
             description: 'Smart lock unlocked',
             time: '8:30 AM',
             tagLabel: 'Mobile App',
-            tagColor: Colors.blue[100]!,
-            tagTextColor: Colors.blue[800]!,
+            tagColor: AppTheme.blue100,
+            tagTextColor: AppTheme.blue800,
           ),
           const SizedBox(height: AppConstants.spacingSmall),
           _buildAccessLogCard(
@@ -259,7 +260,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           const SectionHeader(title: 'Registered Devices'),
           _buildDeviceCard(
             icon: Icons.vpn_key,
-            iconColor: Colors.blue[300]!,
+            iconColor: AppTheme.primaryBlue,
             title: 'iPhone 14 Pro',
             subtitle: 'Mobile App Access',
             status: 'Active',
@@ -277,7 +278,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           const SizedBox(height: AppConstants.spacingSmall),
           _buildDeviceCard(
             icon: Icons.security,
-            iconColor: Colors.blue[300]!,
+            iconColor: AppTheme.primaryBlue,
             title: 'Face ID',
             subtitle: 'Biometric Access',
             status: 'Active',
@@ -289,7 +290,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue[300],
+                backgroundColor: AppTheme.primaryBlue,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppConstants.radiusMedium),

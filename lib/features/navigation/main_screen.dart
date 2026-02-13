@@ -5,6 +5,7 @@ import '../../features/booking/booking_screen.dart';
 import '../../features/bills/bills_screen.dart';
 import '../../features/support/support_screen.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -37,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: AppTheme.primaryBlue,
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(

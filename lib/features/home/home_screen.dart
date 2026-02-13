@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,6 +18,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildServicesSection(),
             const SizedBox(height: 24),
+            _buildCommunityUpdatesSection(),
+            const SizedBox(height: 24),
           ],
         ),
       ),
@@ -30,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.blue[400]!, Colors.lightBlue[300]!],
+          colors: [AppTheme.primaryBlueSecondary, AppTheme.primaryBlue],
         ),
       ),
       child: SafeArea(
@@ -195,7 +198,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: Colors.blue[600],
+                        color: AppTheme.blue600,
                       ),
                     ),
                   ],
@@ -208,7 +211,7 @@ class HomeScreen extends StatelessWidget {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: Colors.blue[500],
+              color: AppTheme.primaryBlue,
               borderRadius: BorderRadius.circular(14),
             ),
             child: const Icon(
@@ -253,7 +256,7 @@ class HomeScreen extends StatelessWidget {
                 child: _buildQuickActionCard(
                   icon: Icons.groups_outlined,
                   title: 'Visitors',
-                  color: Colors.blue[500]!,
+                  color: AppTheme.primaryBlue,
                 ),
               ),
               const SizedBox(width: 12),
@@ -355,7 +358,7 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.blue[500],
+                  color: AppTheme.primaryBlue,
                 ),
               ),
             ],
@@ -379,7 +382,7 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: _buildServiceUtilityCard(
                   icon: Icons.wifi,
-                  iconColor: Colors.blue[500]!,
+                  iconColor: AppTheme.primaryBlue,
                   name: 'Etisalat',
                   type: 'Internet',
                   amount: 'AED 299',
@@ -396,7 +399,7 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: _buildServiceUtilityCard(
                   icon: Icons.water_drop,
-                  iconColor: Colors.blue[400]!,
+                  iconColor: AppTheme.primaryBlue,
                   name: 'Water',
                   type: 'DEWA Water',
                   amount: 'AED 180',
@@ -507,6 +510,113 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCommunityUpdatesSection() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Community Updates',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildCommunityUpdateCard(
+            icon: Icons.pool,
+            iconColor: Colors.blue[400]!,
+            title: 'Pool Maintenance Schedule',
+            description:
+                'The main swimming pool will be closed for maintenance from Jan 20-22.',
+            timestamp: 'Posted 2 hours ago',
+          ),
+          const SizedBox(height: 12),
+          _buildCommunityUpdateCard(
+            icon: Icons.security,
+            iconColor: Colors.purple[400]!,
+            title: 'Enhanced Security Measures',
+            description:
+                'New facial recognition system installed at main gate for faster access.',
+            timestamp: 'Posted yesterday',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCommunityUpdateCard({
+    required IconData icon,
+    required Color iconColor,
+    required String title,
+    required String description,
+    required String timestamp,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              color: iconColor,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: Colors.white, size: 22),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[700],
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  timestamp,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey[500],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

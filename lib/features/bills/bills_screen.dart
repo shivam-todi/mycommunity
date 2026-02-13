@@ -4,6 +4,7 @@ import '../../shared/widgets/section_header.dart';
 import '../../shared/widgets/icon_container.dart';
 import '../../shared/widgets/status_badge.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class BillsScreen extends StatefulWidget {
   const BillsScreen({super.key});
@@ -48,7 +49,7 @@ class _BillsScreenState extends State<BillsScreen> {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.blue[300]!, Colors.blue[400]!],
+          colors: [AppTheme.primaryBlueSecondary, AppTheme.primaryBlue],
         ),
         borderRadius: BorderRadius.circular(AppConstants.radiusLarge),
         boxShadow: [
@@ -95,7 +96,7 @@ class _BillsScreenState extends State<BillsScreen> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.blue,
+                      color: AppTheme.primaryBlue,
                     ),
                   ),
                 ),
@@ -105,7 +106,7 @@ class _BillsScreenState extends State<BillsScreen> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.blue[200],
+                  color: AppTheme.blue200,
                   borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
                 ),
                 child: IconButton(
@@ -204,7 +205,7 @@ class _BillsScreenState extends State<BillsScreen> {
           const SizedBox(height: AppConstants.spacingSmall),
           _buildBillCard(
             icon: Icons.water_drop,
-            iconColor: Colors.blue[300]!,
+            iconColor: AppTheme.primaryBlue,
             title: 'Water Utilities',
             invoiceNumber: 'Invoice #WU-2024-005678',
             amount: 'AED 180.00',
@@ -238,7 +239,7 @@ class _BillsScreenState extends State<BillsScreen> {
         children: [
           _buildBillCard(
             icon: Icons.wifi,
-            iconColor: Colors.blue[300]!,
+            iconColor: AppTheme.primaryBlue,
             title: 'Etisalat - Internet',
             invoiceNumber: 'Invoice #ET-2024-009876',
             amount: 'AED 299.00',

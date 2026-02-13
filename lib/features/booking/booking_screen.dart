@@ -5,6 +5,7 @@ import '../../shared/widgets/icon_container.dart';
 import '../../shared/widgets/status_badge.dart';
 import '../../shared/widgets/custom_icons.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class BookingScreen extends StatelessWidget {
   const BookingScreen({super.key});
@@ -51,7 +52,7 @@ class BookingScreen extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
             border: Border(
-              left: BorderSide(color: Colors.blue[300]!, width: 4),
+              left: BorderSide(color: AppTheme.primaryBlue, width: 4),
             ),
             boxShadow: [
               BoxShadow(
@@ -64,7 +65,7 @@ class BookingScreen extends StatelessWidget {
           child: Row(
             children: [
               IconContainer(
-                color: Colors.blue[300]!,
+                color: AppTheme.primaryBlue,
                 isSwimmingPoolIcon: true,
               ),
               const SizedBox(width: AppConstants.paddingMedium),
@@ -107,8 +108,8 @@ class BookingScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                     StatusBadge(
                       label: 'Confirmed',
-                      backgroundColor: Colors.blue[100]!,
-                      textColor: Colors.blue[800]!,
+                      backgroundColor: AppTheme.blue100,
+                      textColor: AppTheme.blue800,
                     ),
                   ],
                 ),

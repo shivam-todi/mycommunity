@@ -4,6 +4,7 @@ import '../../shared/widgets/section_header.dart';
 import '../../shared/widgets/icon_container.dart';
 import '../../shared/widgets/status_badge.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
@@ -23,20 +24,20 @@ class SupportScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: Colors.blue[200]!, width: 1),
+                  border: Border.all(color: AppTheme.blue200, width: 1),
                   borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.add, color: Colors.blue[300], size: 20),
+                    Icon(Icons.add, color: AppTheme.primaryBlue, size: 20),
                     const SizedBox(width: 4),
                     Text(
                       'New',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: Colors.blue[300],
+                        color: AppTheme.primaryBlue,
                       ),
                     ),
                   ],
@@ -90,8 +91,8 @@ class SupportScreen extends StatelessWidget {
         const SizedBox(height: AppConstants.spacingSmall),
         _buildActiveRequestCard(
           icon: Icons.ac_unit,
-          iconColor: Colors.blue[700]!,
-          borderColor: Colors.blue[300]!,
+          iconColor: AppTheme.blue600,
+          borderColor: AppTheme.primaryBlue,
           title: 'AC Not Cooling',
           ticketNumber: 'SR-2024-00148',
           description:
@@ -99,8 +100,8 @@ class SupportScreen extends StatelessWidget {
           createdTime: 'Created: 5 hours ago',
           assignedTo: 'Awaiting assignment',
           status: 'Pending',
-          statusColor: Colors.blue[100]!,
-          statusTextColor: Colors.blue[800]!,
+          statusColor: AppTheme.blue100,
+          statusTextColor: AppTheme.blue800,
           hasUpdate: false,
         ),
       ],
