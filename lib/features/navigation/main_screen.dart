@@ -23,7 +23,13 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          const HomeScreen(),
+          HomeScreen(
+            onNavigateToTab: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+          ),
           const SecurityScreen(),
           const BookingScreen(),
           const BillsScreen(),

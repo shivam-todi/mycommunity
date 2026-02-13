@@ -40,28 +40,64 @@ class _SecurityScreenState extends State<SecurityScreen> {
 
   Widget _buildTabNavigation() {
     return Container(
-      padding: const EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: AppConstants.paddingMedium,
         vertical: AppConstants.spacingSmall,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildTabButton(
-              label: 'Access Logs',
-              isSelected: _selectedTab == 0,
-              onTap: () => setState(() => _selectedTab = 0),
-            ),
-          ),
-          const SizedBox(width: AppConstants.spacingSmall),
-          Expanded(
-            child: _buildTabButton(
-              label: 'My Devices',
-              isSelected: _selectedTab == 1,
-              onTap: () => setState(() => _selectedTab = 1),
-            ),
-          ),
-        ],
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final tabWidth = (constraints.maxWidth - 8) / 2;
+          return Stack(
+            children: [
+              // Animated sliding indicator
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOutCubic,
+                left: _selectedTab == 0 ? 4 : tabWidth + 4,
+                top: 4,
+                bottom: 4,
+                width: tabWidth,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.08),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // Tab buttons
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildTabButton(
+                      label: 'Access Logs',
+                      isSelected: _selectedTab == 0,
+                      onTap: () => setState(() => _selectedTab = 0),
+                    ),
+                  ),
+                  Expanded(
+                    child: _buildTabButton(
+                      label: 'My Devices',
+                      isSelected: _selectedTab == 1,
+                      onTap: () => setState(() => _selectedTab = 1),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -73,29 +109,21 @@ class _SecurityScreenState extends State<SecurityScreen> {
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(20),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: AppConstants.spacingSmall),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ]
-              : null,
+      borderRadius: BorderRadius.circular(8),
+      child: AnimatedDefaultTextStyle(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+          color: isSelected ? Colors.black87 : Colors.grey[600],
         ),
-        child: Text(
-          label,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-            color: Colors.black87,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            textAlign: TextAlign.center,
           ),
         ),
       ),

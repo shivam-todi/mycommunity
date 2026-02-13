@@ -3,7 +3,9 @@ import '../../core/constants/app_constants.dart';
 import '../../core/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final Function(int)? onNavigateToTab;
+
+  const HomeScreen({super.key, this.onNavigateToTab});
 
   @override
   Widget build(BuildContext context) {
@@ -265,6 +267,7 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.calendar_month,
                   title: 'Book',
                   color: Colors.deepPurple[400]!,
+                  onTap: () => onNavigateToTab?.call(AppConstants.bookingIndex),
                 ),
               ),
               const SizedBox(width: 12),
@@ -273,6 +276,7 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.credit_card,
                   title: 'Pay',
                   color: Colors.orange[400]!,
+                  onTap: () => onNavigateToTab?.call(AppConstants.billsIndex),
                 ),
               ),
               const SizedBox(width: 12),
@@ -281,6 +285,7 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.chat_bubble,
                   title: 'Report',
                   color: Colors.pink[400]!,
+                  onTap: () => onNavigateToTab?.call(AppConstants.supportIndex),
                 ),
               ),
             ],
@@ -294,43 +299,48 @@ class HomeScreen extends StatelessWidget {
     required IconData icon,
     required String title,
     required Color color,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(16),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
             ),
-            child: Icon(icon, color: Colors.white, size: 28),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: Colors.grey[800],
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 56,
+              height: 56,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Icon(icon, color: Colors.white, size: 28),
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Colors.grey[800],
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
